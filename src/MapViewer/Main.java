@@ -1,37 +1,28 @@
 package MapViewer;
 
-import com.neet.DiamondHunter.TileMap.TileMap;
-
 import javafx.application.Application;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 
-
 public class Main extends Application{
-	
-	private TileMap tilemap;
-	private Map map;
-	private FXMLLoader loader;
-	
+	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
-		Stage stage = new Stage();
-		tilemap = new TileMap(16);
-	
-		Parent content = FXMLLoader.load(getClass().getResource("View.fxml"));
-		
-		stage.setScene(new Scene(content));
-		stage.setTitle("Map Viewer");
-		stage.setResizable(false);
-		stage.show();
-		
-		
+		try {
+			BorderPane pane = new BorderPane();
+			pane = FXMLLoader.load(getClass().getResource("View.fxml"));
+			
+			Scene scene = new Scene(pane);
+			
+			primaryStage.setTitle("Map Viewer");
+			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
+			primaryStage.show();
+		} catch (Exception e){
+			e.printStackTrace();
+		}
 	}
-
-	
-	
 	
 	public static void main(String[] args) {
 		launch(args);
