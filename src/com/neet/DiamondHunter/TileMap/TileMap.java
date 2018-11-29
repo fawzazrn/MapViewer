@@ -210,6 +210,13 @@ public class TileMap {
 		
 	}
 	
+	public BufferedImage getSquaresImage(int row, int col) {
+		int rc = map[row][col];
+		int r = rc / numTilesAcross;
+		int c = rc % numTilesAcross;
+		return tiles[r][c].getImage();	
+	}
+	
 	public void draw(Graphics2D g) {
 		
 		for(int row = rowOffset; row < rowOffset + numRowsToDraw; row++) {
