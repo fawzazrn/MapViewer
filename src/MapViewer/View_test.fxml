@@ -16,7 +16,7 @@
    <right>
       <VBox prefHeight="640.0" prefWidth="257.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="OutputConsole" prefHeight="64.0" prefWidth="200.0" text="Output Console">
+            <Label prefHeight="64.0" prefWidth="200.0" text="Output Console">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
