@@ -5,6 +5,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.MouseEvent; 
+import javafx.event.EventHandler; 
+
 
 public class Main extends Application{
 	@Override
@@ -15,11 +18,16 @@ public class Main extends Application{
 			
 			Scene scene = new Scene(pane);
 			
+
+		    primaryStage.setScene(scene);
+		    primaryStage.show();
 			primaryStage.setTitle("Map Viewer");
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			primaryStage.show();
-		} catch (Exception e){
+			
+		} 
+		catch (Exception e){
 			e.printStackTrace();
 		}
 	}
