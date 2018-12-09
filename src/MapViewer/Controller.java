@@ -16,7 +16,6 @@ public class Controller {
 	private TileMap m = new TileMap(16);
 	@FXML Canvas mapcanvas;
 	
-	
 	public Controller() {
 		LoadMap();
 	}
@@ -28,17 +27,12 @@ public class Controller {
 		drawMap(g, numRows, numCols);
 	}
 	
-	
 	private void LoadMap() {
-		
 		m.loadTiles("/Tilesets/testtileset.gif");
 		m.loadMap("/Maps/testmap.map");
 	}
-
-	
 	
 	public void drawMap(GraphicsContext g, int numRows, int numCols) {
-	
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numCols; col++) {
 				
