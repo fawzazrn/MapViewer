@@ -1,5 +1,6 @@
 package MapViewer;
 
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 import com.neet.DiamondHunter.TileMap.TileMap;
@@ -9,12 +10,11 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 
 
 
@@ -84,7 +84,5 @@ public class Controller {
 		}
 	}
 	
-	public void addBoat() {
-		
-	}
+
 }
