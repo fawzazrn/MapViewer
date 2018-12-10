@@ -83,4 +83,8 @@ public class Controller {
 			grid.getRowConstraints().add(Row);
 		}
 	}
+	
+	public void addBoat() {
+		
+	}
 }
