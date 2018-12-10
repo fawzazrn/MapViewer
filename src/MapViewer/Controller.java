@@ -1,9 +1,7 @@
 package MapViewer;
 
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
 import com.neet.DiamondHunter.TileMap.TileMap;
@@ -18,11 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.layout.RowConstraints;
-import javafx.scene.text.Text;
-import javafx.scene.layout.GridPane;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 
 public class Controller {
 
