@@ -8,6 +8,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -50,7 +51,6 @@ public class Controller {
 	
 	
 	private void LoadMap() {
-		
 		m.loadTiles("/Tilesets/testtileset.gif");
 		m.loadMap("/Maps/testmap.map");
 	}
