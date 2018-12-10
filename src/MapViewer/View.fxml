@@ -15,22 +15,31 @@
    <left>
       <AnchorPane prefHeight="640.0" prefWidth="640.0" BorderPane.alignment="CENTER">
          <children>
-            <Canvas fx:id="mapcanvas" height="640.0" onMouseMoved="#updateCoords" width="640.0" />
+            <Canvas fx:id="mapcanvas" height="640.0" onMouseClicked="#onMapMouseClick" onMouseMoved="#updateCoords" width="640.0" />
          </children>
       </AnchorPane>
    </left>
    <right>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="OutputConsoleLabel" prefHeight="64.0" prefWidth="200.0" text="Output Console" />
-            <Button fx:id="AxeButton" layoutY="125.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Place Axe" />
-            <Button fx:id="BoatButton" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Place Boat" />
+            <Label fx:id="OutputConsoleLabel" prefHeight="64.0" prefWidth="200.0" text="Output Console">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></Label>
+            <Button id="AxeButton" fx:id="AxeButton" layoutY="125.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Place Axe">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></Button>
+            <Button id="BoatButton" fx:id="BoatButton" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Place Boat">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></Button>
             <Label fx:id="coLabel" layoutY="260.0" prefHeight="65.0" prefWidth="195.0" text="(0,0)">
                <font>
                   <Font size="27.0" />
                </font>
                <padding>
-                  <Insets left="68.0" />
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
             </Label>
             <Button fx:id="loadMapButton" layoutY="535.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="200.0" text="Load Map" textAlignment="CENTER" textFill="#00d32a">
@@ -43,7 +52,11 @@
                <cursor>
                   <Cursor fx:constant="CROSSHAIR" />
                </cursor>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
             </Button>
+            <Label id="item_label" layoutX="10.0" layoutY="483.0" prefHeight="29.0" prefWidth="178.0" text="Label" textAlignment="CENTER" />
          </children>
       </Pane>
    </right>
