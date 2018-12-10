@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.text.Text;
 import javafx.scene.layout.GridPane;
 import javafx.scene.input.MouseEvent;
 
@@ -34,8 +35,8 @@ public class Controller {
 	@FXML GridPane grid;
 	@FXML private Button AxeButton;	//Button initialization used to place the axe
 	@FXML private Button BoatButton; //Button initialization used to place the boat
-	@FXML Label OutputConsole;	//Text area initialization to test the buttons(not in final prototype) 
-
+	@FXML Label OutputConsoleLabel;	//Text area initialization to test the buttons(not in final prototype) 
+	@FXML Label coLabel;
 
 	public Controller() {
 		LoadMap();
@@ -65,8 +66,11 @@ public class Controller {
 		}
 	}
 	
-	public void updateCoords() {
+	public void updateCoords(MouseEvent event) {
+		int x = (int) event.getX() / m.getTileSize();
+		int y = (int) event.getY() / m.getTileSize();
 		
+		coLabel.setText("(" + x + ", " + y + ")");
 	}
 	
 	
