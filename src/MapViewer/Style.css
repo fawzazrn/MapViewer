@@ -1,0 +1,22 @@
+.button{
+	-fx-background-color: black;
+}
+
+.button:hover{
+	-fx-background-color: white;
+}
+
+@font-face {
+   font-family: gomarice;
+   src: url('gomarice.tff');
+}
+
+.label, .label2{
+   -fx-font-family: 'Game Continue 02';
+   -fx-font-size: 30;
+   -fx-text-align: center;
+}
+
+.label2 {
+   -fx-font-size: 25;
+}
