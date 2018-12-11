@@ -1,17 +1,36 @@
 .button{
-	-fx-background-color: black;
+   -fx-background-color: black;
+   -fx-font-family: 'Game Continue 02';
+   -fx-font-size: 30;
+}
+
+.button1{
+   -fx-background-color: black;
+   -fx-font-family: 'Game Continue 02';
+   -fx-font-size: 20;
 }
 
 .button:hover{
-	-fx-background-color: white;
+   -fx-border-width: 3;
+   -fx-font-family: 'Game Continue 02';
+	-fx-border-color: #f6b93b !important;
+	-fx-transition: all 2s ease 0s;
 }
+
+.button1:hover{
+   -fx-border-width: 3;
+   -fx-font-family: 'Game Continue 02';
+	-fx-border-color: #f6b93b !important;
+	-fx-transition: all 2s ease 0s;
+}
+
 
 @font-face {
    font-family: gomarice;
    src: url('gomarice.tff');
 }
 
-.label, .label2{
+.label, .label2, .label3{
    -fx-font-family: 'Game Continue 02';
    -fx-font-size: 30;
    -fx-text-align: center;
@@ -19,4 +38,8 @@
 
 .label2 {
    -fx-font-size: 25;
+}
+
+.label3 {
+   -fx-font-size: 16;
 }
