@@ -68,7 +68,10 @@
                <font>
                   <Font size="11.0" />
                </font></Label>
-            <Label fx:id="Console" layoutY="580.0" prefHeight="46.0" prefWidth="190.0" text="Label" />
+            <Label fx:id="Console" layoutX="5.0" layoutY="538.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="190.0" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
          </children>
          <padding>
             <Insets right="10.0" />
