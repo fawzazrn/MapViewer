@@ -9,6 +9,7 @@ import java.io.PrintStream;
 
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.TileMap.TileMap;
+
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -42,7 +43,8 @@ public class Controller {
 	@FXML Label coLabel;
 	@FXML Label Console;
 	@FXML Label item_label;
-
+	@FXML Label prompt_map;
+	
 	//this function is to initialize the tile size to 16
 	//the LoadMap() function is called to load the map on the window
 	public Controller() {
@@ -182,12 +184,14 @@ public class Controller {
 		}
 	}
 	
-	public void readFile() {
+	public void readFile(String filepath) {
 		BufferedReader reader;
 		try {
-			reader = new BufferedReader(new FileReader("~/SettingFile/axe.text"));
+			
+			reader = new BufferedReader(new FileReader("~/SettingFile/axe.txt"));
 			String line = reader.readLine();
 			model.setAxeX(Integer.parseInt(line));
+			System.out.println(model.getAxeX());
 			line = reader.readLine();
 			model.setAxeY(Integer.parseInt(line));
 			reader = new BufferedReader(new FileReader("~/SettingFile/boat.txt"));
@@ -208,7 +212,7 @@ public class Controller {
 		item = 0;
 		Console.setText("Axe is selected");
 		model.setItemID(item);
-		Console.setText("\nSet the axe on any of the grass tiles.");
+		//Console.setText("\nSet the axe on any of the grass tiles.");
 		
 	}
 	
@@ -220,19 +224,24 @@ public class Controller {
 		model.setItemID(item);
 	}
 	
+	
 	@FXML
 	public void onSaveMap() {
+		
+		
 		if((item != 0 )&&(item != 1)) {
 			Console.setText("\nPlease set the axe or boat position first");
 		}
+	
 		else {
 			Write2File("~/SettingFile/axe.txt", model.getAxeX(), model.getAxeY());
 			Write2File("~/SettingFile/boat.txt", model.getBoatX(), model.getBoatY());
-			Console.setText("\ncool");
+			
 		}
 	}
 	
-	/*public void onLoadMap() {
+	/*
+	public void onLoadMap() {
 		if((item != 0 )&&(item != 1)) {
 			Console.setText("\nPlease set the axe or boat position first");
 		}
@@ -240,5 +249,6 @@ public class Controller {
 			readFile();
 			Console.setText("ye");
 		}
-	}*/
+	}
+	*/
 }
