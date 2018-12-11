@@ -7,6 +7,10 @@ package com.neet.DiamondHunter.GameState;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.neet.DiamondHunter.Entity.Diamond;
@@ -170,18 +174,36 @@ public class PlayState extends GameState {
 		
 	}
 	
+	public void readFile(String filepath,int [] pos) {
+		BufferedReader reader;
+		try {
+			reader = new BufferedReader(new FileReader(filepath));
+			pos[0] = Integer.parseInt(reader.readLine());
+			pos[1] = Integer.parseInt(reader.readLine());
+		} 
+		
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private void populateItems() {
 		
 		Item item;
+		BufferedReader reader; 
+		
+		int [] posAxe = new int[2];
+		int [] posBoat = new int[2];
 		
 		item = new Item(tileMap);
 		item.setType(Item.AXE);
-		item.setTilePosition(26, 37);
+		readFile("/Users/ten/Documents/MapViewer-master 4/SettingFile/axe.txt", posAxe);
+		item.setTilePosition(posAxe[1], posAxe[0]);
 		items.add(item);
-		
 		item = new Item(tileMap);
 		item.setType(Item.BOAT);
-		item.setTilePosition(12, 4);
+		readFile("/Users/ten/Documents/MapViewer-master 4/SettingFile/boat.txt", posBoat);
+		item.setTilePosition(posBoat[1], posBoat[0]);
 		items.add(item);
 		
 	}
