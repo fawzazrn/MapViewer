@@ -1,6 +1,10 @@
 package MapViewer;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintStream;
+
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.TileMap.TileMap;
 import javafx.embed.swing.SwingFXUtils;
@@ -15,6 +19,10 @@ import javafx.scene.input.MouseEvent;
 public class Controller {
 	private int tileSize;
 	private int item;
+	
+//	private int checkAxebutton = 0;
+//	private int checkBoatbutton = 0;
+
 	private GraphicsContext gc;
 	private TileMap m;
 	private Model model;
@@ -30,6 +38,7 @@ public class Controller {
 	@FXML private Button LoadMapButton; //Button to load Map
 	@FXML Label OutputConsoleLabel;	//Text area initialization to test the buttons(not in final prototype) 
 	@FXML Label coLabel;
+	@FXML Label Console;
 	@FXML Label item_label;
 
 	public Controller() {
@@ -75,23 +84,28 @@ public class Controller {
 	public void onMapMouseClick(MouseEvent event) throws Exception {
 		int x = (int) event.getX() / tileSize; //gets column position
 		int y = (int) event.getY() / tileSize;//gets row position
-		if(m.getType(y, x) == 0) {
-			if(item == 0) {
-				addAxe(x, y);
-				
+			
+			if(m.getType(y, x) == 0) {
+				if(item == 0) {
+					addAxe(x, y);
+					
+				}
+				if(item == 1) {
+					addBoat(x, y);
+				}
 			}
-			if(item == 1) {
-				addBoat(x, y);
-			}
-		}
+		
 	}
 
 	//sets the new location of the axe and calls the draw function
 	public void addAxe(int x, int y) {
+		//checkAxebutton = 0;
 		int oldx = model.getAxeX();
 		int oldy = model.getAxeY();
 		Image sprite = SwingFXUtils.toFXImage(m.getSquaresImage(oldy,oldx), null);
+		
 		gc.drawImage(sprite, oldx*tileSize, oldy*tileSize);
+		
 		model.setAxeX(x);
 		model.setAxeY(y);
 		
@@ -100,6 +114,7 @@ public class Controller {
 	
 	//sets the new location of the boat and calls the draw function
 	public void addBoat(int x, int y) {
+		//checkBoatbutton = 0;
 		int oldx = model.getBoatX();
 		int oldy = model.getBoatY();
 		Image sprite = SwingFXUtils.toFXImage(m.getSquaresImage(oldy,oldx), null);
@@ -127,12 +142,35 @@ public class Controller {
 		gc.drawImage(spriteImage,x*tileSize,y*tileSize);
 	}
 	
+	
+	public void Pos2File(String filePath, int rowIndex, int colIndex) {
+		try {
+			File file = new File(filePath);
+
+			// if file does not exists, then create it
+			if (!file.exists()) {
+				file.getParentFile().mkdirs();
+				file.createNewFile();
+			}
+			PrintStream ps = new PrintStream(filePath);
+			ps.println(rowIndex);
+			ps.println(colIndex);
+
+			ps.close();
+
+		} catch (IOException x) {
+			System.out.println("Error: " + x);
+			x.printStackTrace();
+		}
+	}
+	
 	//if axe button pressed, sets item chosen to axe
 	@FXML
 	public void onAxeAction(){
 		item = 0;
 		System.out.println("Axe is selected");
 		model.setItemID(item);
+		
 	}
 	
 	//if boat button pressed, sets item chosen to boat
@@ -143,10 +181,12 @@ public class Controller {
 		model.setItemID(item);
 	}
 	@FXML
-	public void onLoadMap() {
-		
+	public void onSaveMap() {
+		if((item != 0 )||(item != 1)) {
+			Console.setText("\nPlease set the axe or boat position first");
+		}
+		else {
+			
+		}
 	}
-
-
-
 }
