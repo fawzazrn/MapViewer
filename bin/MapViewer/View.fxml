@@ -97,6 +97,10 @@
                <font>
                   <Font name="American Typewriter" size="13.0" />
                </font></Label>
+            <Label fx:id="Console" layoutX="5.0" layoutY="538.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="190.0" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
             <Label alignment="CENTER" contentDisplay="TOP" layoutX="5.0" layoutY="37.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="57.0" prefWidth="190.0" stylesheets="@Style.css" text="Diamond Hunter" textAlignment="CENTER" />
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="84.0" prefHeight="26.0" prefWidth="190.0" styleClass="label2" stylesheets="@Style.css" text="Map-Viewer" textAlignment="CENTER" />
          </children>
