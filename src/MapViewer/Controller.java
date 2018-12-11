@@ -108,9 +108,6 @@ public class Controller {
 				
 				//error handling for if the user has not selected any items
 				//prints out label 
-				if(item == 2) {
-					Console.setText("No item is selected");
-				}
 			}
 			if(m.getType(y, x) != 0) {
 				Console.setText("Please set item on the grass tiles");
