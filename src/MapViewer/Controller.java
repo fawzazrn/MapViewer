@@ -9,6 +9,7 @@ import java.io.PrintStream;
 
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.TileMap.TileMap;
+
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -43,7 +44,10 @@ public class Controller {
 	@FXML Label coLabel;
 	@FXML Label Console;
 	@FXML Label item_label;
-
+	@FXML Label prompt_map;
+	
+	//this function is to initialize the tile size to 16
+	//the LoadMap() function is called to load the map on the window
 	public Controller() {
 		tileSize = 16;
 		m = new TileMap(tileSize);
@@ -51,6 +55,10 @@ public class Controller {
 		LoadMap();
 	}
 
+	//the initialize() function does the job to get the number of rows and columns from the 
+	//object TileMap 
+	//mapcanvas is an object of Canvas that is used to display the map
+	//
 	@FXML
 	public void initialize() {
 		Rownum = m.getNumRows();
@@ -60,7 +68,7 @@ public class Controller {
 		Console.setText("Select either Axe or Boat to be placed");
 	}
 	
-	//Function to load the map from file
+	//Function to load the map from Tileset
 	private void LoadMap() {
 		m.loadTiles("/Tilesets/testtileset.gif");
 		m.loadMap("/Maps/testmap.map");
@@ -97,6 +105,9 @@ public class Controller {
 				if(isBoatChosen == true) {
 					addBoat(x, y);
 				}
+				
+				//error handling for if the user has not selected any items
+				//prints out label 
 			}
 			if(m.getType(y, x) != 0) {
 				Console.setText("Please set item on the grass tiles");
@@ -104,7 +115,8 @@ public class Controller {
 		
 	}
 
-	//sets the new location of the axe and calls the draw function
+	//sets the new location of the axe and calls the drawItem function to draw the image of 
+	//axe onto the map
 	public void addAxe(int x, int y) {
 		//checkAxebutton = 0;
 		int oldx = model.getAxeX();
@@ -119,9 +131,9 @@ public class Controller {
 		drawItem(x, y);
 	}
 	
-	//sets the new location of the boat and calls the draw function
+	//sets the new location of boat axe and calls the drawItem function to draw the image of 
+	//boat onto the map
 	public void addBoat(int x, int y) {
-		//checkBoatbutton = 0;
 		int oldx = model.getBoatX();
 		int oldy = model.getBoatY();
 		Image sprite = SwingFXUtils.toFXImage(m.getSquaresImage(oldy,oldx), null);
@@ -170,7 +182,7 @@ public class Controller {
 			x.printStackTrace();
 		}
 	}
-	
+
 	//if axe button pressed, sets item chosen to axe
 	@FXML
 	public void onAxeAction(){
@@ -191,11 +203,14 @@ public class Controller {
 		model.setItemID(1);
 		Console.setText("\nSet the boat on any of the grass tiles");
 	}
+	
+	
 	@FXML
 	public void onSaveMap() {
 		if((isAxeChosen == false )&&(isBoatChosen == false)) {
 			Console.setText("\nPlease set the axe or boat position first");
 		}
+	
 		else {
 			Write2File("~/SettingFile/axe.txt", model.getAxeX(), model.getAxeY());
 			Write2File("~/SettingFile/boat.txt", model.getBoatX(), model.getBoatY());
