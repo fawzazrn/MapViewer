@@ -21,7 +21,8 @@ import javafx.scene.input.MouseEvent;
 
 public class Controller {
 	private int tileSize;
-	private int item=2;
+	private boolean isAxeChosen = false;
+	private boolean isBoatChosen = false;
 	
 //	private int checkAxebutton = 0;
 //	private int checkBoatbutton = 0;
@@ -64,6 +65,7 @@ public class Controller {
 		Colnum = m.getNumCols();
 		gc = mapcanvas.getGraphicsContext2D();
 		drawMap(gc, Rownum, Colnum);
+		Console.setText("Select either Axe or Boat to be placed");
 	}
 	
 	//Function to load the map from Tileset
@@ -96,11 +98,11 @@ public class Controller {
 		int y = (int) event.getY() / tileSize;//gets row position
 			
 			if(m.getType(y, x) == 0) {
-				if(item == 0) {
+				if(isAxeChosen == true) {
 					addAxe(x, y);
 					
 				}
-				if(item == 1) {
+				if(isBoatChosen == true) {
 					addBoat(x, y);
 				}
 				
@@ -148,7 +150,7 @@ public class Controller {
 	//draws the item onto the map
 	public void drawItem(int x, int y) {
 		BufferedImage sprite;
-		if(item == 0) {
+		if(isAxeChosen == true) {
 			sprite = Content.ITEMS[1][1];
 			System.out.println("Test");
 		}
@@ -184,71 +186,39 @@ public class Controller {
 		}
 	}
 	
-	public void readFile(String filepath) {
-		BufferedReader reader;
-		try {
-			
-			reader = new BufferedReader(new FileReader("~/SettingFile/axe.txt"));
-			String line = reader.readLine();
-			model.setAxeX(Integer.parseInt(line));
-			System.out.println(model.getAxeX());
-			line = reader.readLine();
-			model.setAxeY(Integer.parseInt(line));
-			reader = new BufferedReader(new FileReader("~/SettingFile/boat.txt"));
-			line = reader.readLine();
-			model.setBoatX(Integer.parseInt(line));
-			line = reader.readLine();
-			model.setBoatY(Integer.parseInt(line));
-		} 
-		catch(IOException e) {
-			e.printStackTrace();
-		}
-		
-	}
-	
+
 	//if axe button pressed, sets item chosen to axe
 	@FXML
 	public void onAxeAction(){
-		item = 0;
-		Console.setText("Axe is selected");
-		model.setItemID(item);
-		//Console.setText("\nSet the axe on any of the grass tiles.");
+		isAxeChosen = true;
+		isBoatChosen = false;
+		System.out.println("Axe is selected");
+		model.setItemID(0);
+		Console.setText("\nSet the axe on any of the grass tiles.");
 		
 	}
 	
 	//if boat button pressed, sets item chosen to boat
 	@FXML
 	public void onBoatAction(){
-		item = 1;
-		Console.setText("Boat is selected");
-		model.setItemID(item);
+		isAxeChosen = false;
+		isBoatChosen = true;
+		System.out.println("Boat is selected");
+		model.setItemID(1);
+		Console.setText("\nSet the boat on any of the grass tiles");
 	}
 	
 	
 	@FXML
 	public void onSaveMap() {
-		
-		
-		if((item != 0 )&&(item != 1)) {
+		if((isAxeChosen == false )&&(isBoatChosen == false)) {
 			Console.setText("\nPlease set the axe or boat position first");
 		}
 	
 		else {
 			Write2File("~/SettingFile/axe.txt", model.getAxeX(), model.getAxeY());
 			Write2File("~/SettingFile/boat.txt", model.getBoatX(), model.getBoatY());
-			
+			Console.setText("\nCo-ordinates saved.");
 		}
 	}
-	
-	/*
-	public void onLoadMap() {
-		if((item != 0 )&&(item != 1)) {
-			Console.setText("\nPlease set the axe or boat position first");
-		}
-		else {
-			readFile();
-			Console.setText("ye");
-		}
-	}
-	*/
 }
