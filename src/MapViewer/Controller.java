@@ -1,7 +1,9 @@
 package MapViewer;
 
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
 
@@ -94,6 +96,9 @@ public class Controller {
 					addBoat(x, y);
 				}
 			}
+			if(m.getType(y, x) != 0) {
+				Console.setText("Please set item on the grass tiles");
+			}
 		
 	}
 
@@ -143,7 +148,7 @@ public class Controller {
 	}
 	
 	
-	public void Pos2File(String filePath, int rowIndex, int colIndex) {
+	public void Write2File(String filePath, int rowIndex, int colIndex) {
 		try {
 			File file = new File(filePath);
 
@@ -152,7 +157,7 @@ public class Controller {
 				file.getParentFile().mkdirs();
 				file.createNewFile();
 			}
-			PrintStream ps = new PrintStream(filePath);
+			PrintStream ps = new PrintStream(file);
 			ps.println(rowIndex);
 			ps.println(colIndex);
 
@@ -164,12 +169,33 @@ public class Controller {
 		}
 	}
 	
+	public void readFile() {
+		BufferedReader reader;
+		try {
+			reader = new BufferedReader(new FileReader("~/SettingFile/axe.text"));
+			String line = reader.readLine();
+			model.setAxeX(Integer.parseInt(line));
+			line = reader.readLine();
+			model.setAxeY(Integer.parseInt(line));
+			reader = new BufferedReader(new FileReader("~/SettingFile/boat.txt"));
+			line = reader.readLine();
+			model.setBoatX(Integer.parseInt(line));
+			line = reader.readLine();
+			model.setBoatY(Integer.parseInt(line));
+		} 
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	//if axe button pressed, sets item chosen to axe
 	@FXML
 	public void onAxeAction(){
 		item = 0;
 		System.out.println("Axe is selected");
 		model.setItemID(item);
+		Console.setText("\nSet the axe on any of the grass tiles.");
 		
 	}
 	
@@ -182,11 +208,23 @@ public class Controller {
 	}
 	@FXML
 	public void onSaveMap() {
-		if((item != 0 )||(item != 1)) {
+		if((item != 0 )&&(item != 1)) {
 			Console.setText("\nPlease set the axe or boat position first");
 		}
 		else {
-			
+			Write2File("~/SettingFile/axe.txt", model.getAxeX(), model.getAxeY());
+			Write2File("~/SettingFile/boat.txt", model.getBoatX(), model.getBoatY());
+			Console.setText("\ncool");
 		}
 	}
+	
+	/*public void onLoadMap() {
+		if((item != 0 )&&(item != 1)) {
+			Console.setText("\nPlease set the axe or boat position first");
+		}
+		else {
+			readFile();
+			Console.setText("ye");
+		}
+	}*/
 }
