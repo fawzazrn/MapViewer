@@ -108,9 +108,6 @@
                   <Glow level="1.0" />
                </effect></Label>
          </children>
-         <padding>
-            <Insets right="10.0" />
-         </padding>
       </Pane>
    </right>
 </BorderPane>

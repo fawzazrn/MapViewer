@@ -8,13 +8,13 @@ public class Model {
 	private int axey;
 	private int item;
 	
-	//private double old_boat_x;
-	//private double old_boat_y;
-	//private double old_axe_x;
-	//private double old_axe_y;
+	//private int old_boat_x;
+	//private int old_boat_y;
+	//private int old_axe_x;
+	//private int old_axe_y;
 	
 	//private double boatNumber;
-	private int axeNumber;
+	//private int axeNumber;
 	
 	//private int oldboatNumber;
 	//private int oldaxeNumber;
