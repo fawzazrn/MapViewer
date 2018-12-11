@@ -2,11 +2,11 @@ package MapViewer;
 
 public class Model {
 
-	private double boatx;
-	private double boaty;
-	private double axex;
-	private double axey;
-	private double item;
+	private int boatx;
+	private int boaty;
+	private int axex;
+	private int axey;
+	private int item;
 	
 	//private double old_boat_x;
 	//private double old_boat_y;
@@ -14,56 +14,48 @@ public class Model {
 	//private double old_axe_y;
 	
 	//private double boatNumber;
-	private double axeNumber;
+	private int axeNumber;
 	
 	//private int oldboatNumber;
 	//private int oldaxeNumber;
 	
-	public void setBoatX(double bx) {
+	public void setBoatX(int bx) {
 		boatx = bx;
 	}
 	
-	public void setBoatY(double by) {
+	public void setBoatY(int by) {
 		boaty = by;
 	}
 	
-	public void setAxeX(double ax) {
+	public void setAxeX(int ax) {
 		axex = ax;
 	}
 	
-	public void setAxeY(double ay) {
+	public void setAxeY(int ay) {
 		axey = ay;
 	}
 	
-	public double getAxeX() {
+	public int getAxeX() {
 		return axex;
 	}
 	
-	public double getAxeY() {
+	public int getAxeY() {
 		return axey;
 	}
 	
-	public double getBoatX() {
+	public int getBoatX() {
 		return boatx;
 	}
 	
-	public double getBoatY() {
+	public int getBoatY() {
 		return boaty;
 	}
 	
-	public void setaxeNumber(double axeNumber) {
-		this.axeNumber = axeNumber;
-	}
-	
-	public double getaxeNumber() {
-		return axeNumber;
-	}
-	
-	public void setItemID(double item) {
+	public void setItemID(int item) {
 		this.item = item;
 	}
 	
-	public double getItemID() {
+	public int getItemID() {
 		return item;
 	}
 	
