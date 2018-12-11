@@ -197,12 +197,12 @@ public class PlayState extends GameState {
 		
 		item = new Item(tileMap);
 		item.setType(Item.AXE);
-		readFile("/Users/ten/Documents/MapViewer-master 4/SettingFile/axe.txt", posAxe);
+		readFile("~/SettingFile/axe.txt", posAxe);
 		item.setTilePosition(posAxe[1], posAxe[0]);
 		items.add(item);
 		item = new Item(tileMap);
 		item.setType(Item.BOAT);
-		readFile("/Users/ten/Documents/MapViewer-master 4/SettingFile/boat.txt", posBoat);
+		readFile("~/SettingFile/boat.txt", posBoat);
 		item.setTilePosition(posBoat[1], posBoat[0]);
 		items.add(item);
 		

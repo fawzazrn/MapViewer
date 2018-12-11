@@ -197,8 +197,8 @@ public class Controller {
 			Console.setText("\nPlease set the axe or boat position first");
 		}
 		else {
-			Write2File("SettingFile/axe.txt", model.getAxeX(), model.getAxeY());
-			Write2File("SettingFile/boat.txt", model.getBoatX(), model.getBoatY());
+			Write2File("~/SettingFile/axe.txt", model.getAxeX(), model.getAxeY());
+			Write2File("~/SettingFile/boat.txt", model.getBoatX(), model.getBoatY());
 			Console.setText("\nCo-ordinates saved.");
 		}
 	}
