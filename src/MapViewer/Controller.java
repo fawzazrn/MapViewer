@@ -182,7 +182,7 @@ public class Controller {
 			x.printStackTrace();
 		}
 	}
-
+	
 	//if axe button pressed, sets item chosen to axe
 	@FXML
 	public void onAxeAction(){
