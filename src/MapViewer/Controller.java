@@ -1,4 +1,4 @@
-package MapViewer;package MapViewer;
+package MapViewer;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
