@@ -8,16 +8,16 @@ public class Model {
 	private double axey;
 	private double item;
 	
-	private double old_boat_x;
-	private double old_boat_y;
-	private double old_axe_x;
-	private double old_axe_y;
+	//private double old_boat_x;
+	//private double old_boat_y;
+	//private double old_axe_x;
+	//private double old_axe_y;
 	
-	private double boatNumber;
+	//private double boatNumber;
 	private double axeNumber;
 	
-	private int oldboatNumber;
-	private int oldaxeNumber;
+	//private int oldboatNumber;
+	//private int oldaxeNumber;
 	
 	public void setBoatX(double bx) {
 		boatx = bx;

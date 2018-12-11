@@ -23,10 +23,10 @@ public class Controller {
 
 	private TileMap m = new TileMap(16);
 	private Model model = new Model();
-	private int tileSize;
-	private Image axe;
-	private Image boat;
-	private int item;
+	//private int tileSize;
+	//private Image axe;
+	//private Image boat;
+	private double item;
 	
 	int Rownum = 40;
 	int Colnum = 40;
@@ -35,6 +35,7 @@ public class Controller {
 	@FXML AnchorPane grid_anchor_pane;
 	@FXML private Button AxeButton;	//Button initialization used to place the axe
 	@FXML private Button BoatButton; //Button initialization used to place the boat
+	@FXML private Button LoadMapButton; //Button to load Map
 	@FXML Label OutputConsoleLabel;	//Text area initialization to test the buttons(not in final prototype) 
 	@FXML Label coLabel;
 	@FXML Label item_label;
@@ -79,7 +80,7 @@ public class Controller {
 		Double yy = event.getY() / m.getTileSize();
 		
 		if(model.getItemID()==0) {
-			System.out.println(xx + " " + yy);
+			//System.out.println(xx + " " + yy);
 			addAxe(Math.round(xx), Math.round(yy));
 		}
 	}
@@ -103,21 +104,23 @@ public class Controller {
 		double x_tile = x;
 		double y_tile = y;
 		
-		System.out.println("x tile = " + x_tile + " " + y_tile);
+		//System.out.println("x tile = " + x_tile + " " + y_tile);
 		if(model.getaxeNumber()<=0) {
 			model.setAxeX(x_tile);
 			model.setAxeY(y_tile);
-			updateMap(x,y,0);
+			updateMap(model.getAxeX(), model.getAxeY(), model.getItemID());
 			model.setaxeNumber(1);
 			
 		}
 		
 	}
 	
-	public void updateMap(double x, double y, int item) {
+	public void updateMap(double x, double y, double item) {
+		
 		BufferedImage sprite;
 		if(item == 0) {
 			sprite = Content.ITEMS[1][0];
+			//System.out.println("Test");
 		}
 		
 		else {
@@ -129,12 +132,14 @@ public class Controller {
 		Image spriteImage = SwingFXUtils.toFXImage(sprite, null);
 		item_image_view.setImage(spriteImage);
 		
+		
 		grid_anchor_pane.getChildren().add(item_image_view);
 		item_image_view.setX(x);
 		item_image_view.setY(y);
 		
 		
 	}
+	
 	
 	private void loadItems() {
 		
@@ -143,6 +148,13 @@ public class Controller {
 			System.out.println("Axe is selected");
 			model.setItemID(item);
 		});
+		
+		BoatButton.setOnAction((event) -> {
+			item=1;
+			System.out.println("Boat is selected");
+			model.setItemID(item);
+		});
+		
 	}
 	
 	
