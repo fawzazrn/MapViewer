@@ -4,16 +4,22 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+
+import com.neet.DiamondHunter.Main.Game;
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.TileMap.TileMap;
+import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class Controller {
 	private int tileSize;
@@ -40,6 +46,7 @@ public class Controller {
 	@FXML Label coLabel;
 	@FXML Label Console;
 	@FXML Label item_label;
+	@FXML public Button StartGameButton;
 
 	public Controller() {
 		tileSize = 16;
@@ -235,5 +242,13 @@ public class Controller {
 		Console.setText("Map has been reset");
 		Console.setPrefWidth(167);
 	    Console.setWrapText(true);
+	}
+	
+	@FXML
+	public void onStartGame() {
+		Main.ps.hide();
+		Game.main(null);
+		
+		
 	}
 }

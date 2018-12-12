@@ -1,27 +1,41 @@
-.button, .button1{
+.button, .buttonMap, .buttonMap2, .buttonItems, .buttonStart{
    -fx-background-color: black;
    -fx-font-family: 'Game Continue 02';
    -fx-text-fill: #1f7ca1 !important;
-   -fx-font-size: 30;
-}
-
-.button1{
    -fx-font-size: 20;
 }
 
+.buttonMap{
+	-fx-font-size: 30;
+}
+
 .button:hover{
-   -fx-border-width: 3;
-   -fx-font-family: 'Game Continue 02';
+	-fx-border-color: #e60000 !important;
+	-fx-text-fill: #e60000 !important;
+	-fx-transition: all 2s ease 0s;
+}
+
+.buttonMap:hover{
+	-fx-border-color: #e60000 !important;
+	-fx-text-fill: #e60000 !important;
+	-fx-transition: all 2s ease 0s;
+}
+
+.buttonMap2:hover{
+	-fx-border-color: #e60000 !important;
+	-fx-text-fill: #e60000 !important;
+	-fx-transition: all 2s ease 0s;
+}
+
+.buttonItems:hover{
 	-fx-border-color: #f6b93b !important;
 	-fx-text-fill: #f6b93b !important;
 	-fx-transition: all 2s ease 0s;
 }
 
-.button1:hover{
-   -fx-border-width: 3;
-   -fx-font-family: 'Game Continue 02';
-	-fx-border-color: #f6b93b !important;
-	-fx-text-fill: #f6b93b !important;
+.buttonStart:hover{
+	-fx-border-color: #00b300 !important;
+	-fx-text-fill: #00b300 !important;
 	-fx-transition: all 2s ease 0s;
 }
 
