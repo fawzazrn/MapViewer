@@ -245,7 +245,7 @@ public class Controller {
 	@FXML
 	public void onSaveMap() {
 		if((isAxeChosen == false )&&(isBoatChosen == false)) {
-			Console.setText("\nPlease set the axe or boat position first");
+			Console.setText("Please set the axe or boat position first");
 			Console.setPrefWidth(167);
 		    Console.setWrapText(true);
 		}
