@@ -188,7 +188,6 @@ public class PlayState extends GameState {
 	}
 	
 	private void populateItems() {
-		
 		Item item;
 		BufferedReader reader; 
 		
