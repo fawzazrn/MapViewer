@@ -8,18 +8,14 @@ import java.io.PrintStream;
 import com.neet.DiamondHunter.Main.Game;
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.TileMap.TileMap;
-import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class Controller {
 	private int tileSize;
@@ -99,10 +95,12 @@ public class Controller {
 			
 			if(m.getType(y, x) == 0) {
 				if(isAxeChosen == true) {
+					Console.setText("Set the axe on any of the grass tiles.");
 					addAxe(x, y);
 					
 				}
 				if(isBoatChosen == true) {
+					Console.setText("Set the boat on any of the grass tiles.");
 					addBoat(x, y);
 				}
 			}

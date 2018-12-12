@@ -8,7 +8,6 @@ package com.neet.DiamondHunter.GameState;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -189,7 +188,6 @@ public class PlayState extends GameState {
 	
 	private void populateItems() {
 		Item item;
-		BufferedReader reader; 
 		
 		int [] posAxe = new int[2];
 		int [] posBoat = new int[2];
