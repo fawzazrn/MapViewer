@@ -28,7 +28,9 @@ public class Controller {
 	
 //	private int checkAxebutton = 0;
 //	private int checkBoatbutton = 0;
-
+	
+	private boolean RadioClicked = false;
+	
 	private GraphicsContext gc;
 	private TileMap m;
 	private Model model;
@@ -120,7 +122,9 @@ public class Controller {
 		Image sprite = SwingFXUtils.toFXImage(m.getSquaresImage(oldy,oldx), null);
 		
 		gc.drawImage(sprite, oldx*tileSize, oldy*tileSize);
-		
+		if(RadioClicked == true)
+		mapcanvas.getGraphicsContext2D().strokeRect(oldx*tileSize, oldy*tileSize, 16, 16);
+
 		model.setAxeX(x);
 		model.setAxeY(y);
 		
@@ -134,6 +138,10 @@ public class Controller {
 		int oldy = model.getBoatY();
 		Image sprite = SwingFXUtils.toFXImage(m.getSquaresImage(oldy,oldx), null);
 		gc.drawImage(sprite, oldx*tileSize, oldy*tileSize);
+		if(RadioClicked == true)
+
+		mapcanvas.getGraphicsContext2D().strokeRect(oldx*tileSize, oldy*tileSize, 16, 16);
+
 		model.setBoatX(x);
 		model.setBoatY(y);
 		
@@ -191,6 +199,39 @@ public class Controller {
 		
 	}
 	
+	@FXML
+	public void onRadioClicked() {
+		
+		if(RadioClicked == false) {
+			for (int row = 0; row < 40; row++) {
+				for (int col = 0; col < 40; col++) {
+					
+					mapcanvas.getGraphicsContext2D().strokeRect(row * 16, col * 16, 16, 16);
+				}
+			}
+			RadioClicked = true;}
+		else {
+			RadioClicked = false;
+			for (int row1 = 0; row1 < 40; row1++) {
+				for (int col1 = 0; col1 < 40; col1++) {
+					BufferedImage rcImage = m.getSquaresImage(row1, col1);
+					Image tile = SwingFXUtils.toFXImage(rcImage, null);
+					gc.drawImage(tile, col1 * 16, row1 * 16);
+					//mapcanvas.getGraphicsContext2D().clearRect(row1 * 16, col1 * 16, 16, 16);
+				}
+			}
+			
+			BufferedImage Asprite;
+			Asprite = Content.ITEMS[1][1];	
+			Image AspriteImage = SwingFXUtils.toFXImage(Asprite, null);
+			gc.drawImage(AspriteImage,model.getAxeX()*tileSize, model.getAxeY()*tileSize);
+			
+			BufferedImage Bsprite;
+			Bsprite = Content.ITEMS[1][0];	
+			Image BspriteImage = SwingFXUtils.toFXImage(Bsprite, null);
+			gc.drawImage(BspriteImage,model.getBoatX()*tileSize, model.getBoatY()*tileSize);
+		}
+	}
 	//if boat button pressed, sets item chosen to boat
 	@FXML
 	public void onBoatAction(){
