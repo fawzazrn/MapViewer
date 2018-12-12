@@ -8,27 +8,19 @@ import java.io.PrintStream;
 import com.neet.DiamondHunter.Main.Game;
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.TileMap.TileMap;
-import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class Controller {
 	private int tileSize;
 	private boolean isAxeChosen = false;
 	private boolean isBoatChosen = false;
-	
-//	private int checkAxebutton = 0;
-//	private int checkBoatbutton = 0;
-	
 	private boolean RadioClicked = false;
 	
 	private GraphicsContext gc;
@@ -116,7 +108,6 @@ public class Controller {
 
 	//sets the new location of the axe and calls the draw function
 	public void addAxe(int x, int y) {
-		//checkAxebutton = 0;
 		int oldx = model.getAxeX();
 		int oldy = model.getAxeY();
 		Image sprite = SwingFXUtils.toFXImage(m.getSquaresImage(oldy,oldx), null);
@@ -133,7 +124,6 @@ public class Controller {
 	
 	//sets the new location of the boat and calls the draw function
 	public void addBoat(int x, int y) {
-		//checkBoatbutton = 0;
 		int oldx = model.getBoatX();
 		int oldy = model.getBoatY();
 		Image sprite = SwingFXUtils.toFXImage(m.getSquaresImage(oldy,oldx), null);
@@ -153,11 +143,9 @@ public class Controller {
 		BufferedImage sprite;
 		if(isAxeChosen == true) {
 			sprite = Content.ITEMS[1][1];
-			System.out.println("Test");
 		}
 		else {
 			sprite = Content.ITEMS[1][0];
-			System.out.println("Test2");
 		}
 		
 		//converts BUFFEREDIMAGE to an image
@@ -192,7 +180,7 @@ public class Controller {
 		isAxeChosen = true;
 		isBoatChosen = false;
 		System.out.println("Axe is selected");
-		model.setItemID(0);
+		model.setItemID(0);			
 		Console.setText("Set the axe on any of the grass tiles.");
 		Console.setPrefWidth(167);
 	    Console.setWrapText(true);
@@ -217,7 +205,6 @@ public class Controller {
 					BufferedImage rcImage = m.getSquaresImage(row1, col1);
 					Image tile = SwingFXUtils.toFXImage(rcImage, null);
 					gc.drawImage(tile, col1 * 16, row1 * 16);
-					//mapcanvas.getGraphicsContext2D().clearRect(row1 * 16, col1 * 16, 16, 16);
 				}
 			}
 			
