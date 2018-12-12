@@ -5,9 +5,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 
-import com.neet.DiamondHunter.Main.Game;
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.TileMap.TileMap;
+
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -44,7 +44,6 @@ public class Controller {
 	@FXML Label coLabel;
 	@FXML Label Console;
 	@FXML Label item_label;
-	@FXML public Button StartGameButton;
 
 	public Controller() {
 		tileSize = 16;
@@ -95,12 +94,10 @@ public class Controller {
 			
 			if(m.getType(y, x) == 0) {
 				if(isAxeChosen == true) {
-					Console.setText("Set the axe on any of the grass tiles.");
 					addAxe(x, y);
 					
 				}
 				if(isBoatChosen == true) {
-					Console.setText("Set the boat on any of the grass tiles.");
 					addBoat(x, y);
 				}
 			}
@@ -197,17 +194,28 @@ public class Controller {
 //	 
 	@FXML
 	public void onRadioClicked() {
+		
+		//Specifying the color to be filled into the rectangle
 		mapcanvas.getGraphicsContext2D().setFill(Color.TRANSPARENT);
+		//Specifying the color of the rectangle to be printed
 		mapcanvas.getGraphicsContext2D().setStroke(Color.GRAY);
+		
 		if(RadioClicked == false) {
+			//nested for-loop to print out each rectangle to form a grid
 			for (int row = 0; row < 40; row++) {
 				for (int col = 0; col < 40; col++) {
 					mapcanvas.getGraphicsContext2D().strokeRect(row * 16, col * 16, 16, 16);
 				}
 			}
-			RadioClicked = true;}
+			
+			RadioClicked = true;
+			
+			}
+		
 		else {
+			
 			RadioClicked = false;
+			//for loop to print the map is the radio button is off
 			for (int row1 = 0; row1 < 40; row1++) {
 				for (int col1 = 0; col1 < 40; col1++) {
 					BufferedImage rcImage = m.getSquaresImage(row1, col1);
@@ -215,15 +223,19 @@ public class Controller {
 					gc.drawImage(tile, col1 * 16, row1 * 16);
 									}
 			}
-			
+			//Passing the buffered image of the axe as an image type
 			BufferedImage Asprite;
 			Asprite = Content.ITEMS[1][1];	
 			Image AspriteImage = SwingFXUtils.toFXImage(Asprite, null);
+			
+			//drawing the axe image on the canvas
 			gc.drawImage(AspriteImage,model.getAxeX()*tileSize, model.getAxeY()*tileSize);
 			
 			BufferedImage Bsprite;
 			Bsprite = Content.ITEMS[1][0];	
 			Image BspriteImage = SwingFXUtils.toFXImage(Bsprite, null);
+			
+			//drawing the boat image on the canvas
 			gc.drawImage(BspriteImage,model.getBoatX()*tileSize, model.getBoatY()*tileSize);
 		}
 	}
@@ -238,11 +250,10 @@ public class Controller {
 		Console.setPrefWidth(167);
 	    Console.setWrapText(true);
 	}
-	
 	@FXML
 	public void onSaveMap() {
 		if((isAxeChosen == false )&&(isBoatChosen == false)) {
-			Console.setText("Please set the axe or boat position first");
+			Console.setText("\nPlease set the axe or boat position first");
 			Console.setPrefWidth(167);
 		    Console.setWrapText(true);
 		}
@@ -282,13 +293,5 @@ public class Controller {
 		Console.setText("Map has been reset");
 		Console.setPrefWidth(167);
 	    Console.setWrapText(true);
-	}
-	
-	@FXML
-	public void onStartGame() {
-		Main.ps.hide();
-		Game.main(null);
-		
-		
 	}
 }
