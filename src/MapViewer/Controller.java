@@ -1,14 +1,9 @@
 package MapViewer;
 
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
-
-import com.neet.DiamondHunter.Entity.Item;
-import com.neet.DiamondHunter.GameState.PlayState;
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.TileMap.TileMap;
 import javafx.embed.swing.SwingFXUtils;
@@ -155,7 +150,6 @@ public class Controller {
 		gc.drawImage(spriteImage,x*tileSize,y*tileSize);
 	}
 	
-	
 	public void Write2File(String filePath, int rowIndex, int colIndex) {
 		try {
 			File file = new File(filePath);
@@ -214,19 +208,6 @@ public class Controller {
 			Console.setText("Co-ordinates saved.");
 			Console.setPrefWidth(167);
 		    Console.setWrapText(true);
-		}
-	}
-	
-	public void readFile(String filepath,int [] pos) {
-		BufferedReader reader;
-		try {
-			reader = new BufferedReader(new FileReader(filepath));
-			pos[0] = Integer.parseInt(reader.readLine());
-			pos[1] = Integer.parseInt(reader.readLine());
-		} 
-		
-		catch(IOException e) {
-			e.printStackTrace();
 		}
 	}
 	
