@@ -1,12 +1,9 @@
-package MapViewer;package MapViewer;
+package MapViewer;
 
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
-
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.TileMap.TileMap;
 import javafx.embed.swing.SwingFXUtils;
@@ -58,6 +55,8 @@ public class Controller {
 		gc = mapcanvas.getGraphicsContext2D();
 		drawMap(gc, Rownum, Colnum);
 		Console.setText("Select either Axe or Boat to be placed");
+		Console.setPrefWidth(167);
+	    Console.setWrapText(true);
 	}
 	
 	//Function to load the map from file
@@ -100,6 +99,8 @@ public class Controller {
 			}
 			if(m.getType(y, x) != 0) {
 				Console.setText("Please set item on the grass tiles");
+				Console.setPrefWidth(167);
+			    Console.setWrapText(true);
 			}
 		
 	}
@@ -149,7 +150,6 @@ public class Controller {
 		gc.drawImage(spriteImage,x*tileSize,y*tileSize);
 	}
 	
-	
 	public void Write2File(String filePath, int rowIndex, int colIndex) {
 		try {
 			File file = new File(filePath);
@@ -178,7 +178,9 @@ public class Controller {
 		isBoatChosen = false;
 		System.out.println("Axe is selected");
 		model.setItemID(0);
-		Console.setText("\nSet the axe on any of the grass tiles.");
+		Console.setText("Set the axe on any of the grass tiles.");
+		Console.setPrefWidth(167);
+	    Console.setWrapText(true);
 		
 	}
 	
@@ -189,17 +191,49 @@ public class Controller {
 		isBoatChosen = true;
 		System.out.println("Boat is selected");
 		model.setItemID(1);
-		Console.setText("\nSet the boat on any of the grass tiles");
+		Console.setText("Set the boat on any of the grass tiles");
+		Console.setPrefWidth(167);
+	    Console.setWrapText(true);
 	}
 	@FXML
 	public void onSaveMap() {
 		if((isAxeChosen == false )&&(isBoatChosen == false)) {
 			Console.setText("\nPlease set the axe or boat position first");
+			Console.setPrefWidth(167);
+		    Console.setWrapText(true);
 		}
 		else {
-			Write2File("SettingFile/axe.txt", model.getAxeX(), model.getAxeY());
-			Write2File("SettingFile/boat.txt", model.getBoatX(), model.getBoatY());
-			Console.setText("\nCo-ordinates saved.");
+			Write2File("~/SettingFile/axe.txt", model.getAxeX(), model.getAxeY());
+			Write2File("~/SettingFile/boat.txt", model.getBoatX(), model.getBoatY());
+			Console.setText("Co-ordinates saved.");
+			Console.setPrefWidth(167);
+		    Console.setWrapText(true);
 		}
+	}
+	
+	//When reset map button is pressed, takes away the current axe and boat on the map
+	@FXML
+	public void onReset() {
+		int xBoat = model.getBoatX();
+		int yBoat = model.getBoatY();
+		int xAxe = model.getAxeX();
+		int yAxe = model.getAxeY();
+		
+		Image sprite1 = SwingFXUtils.toFXImage(m.getSquaresImage(yBoat,xBoat), null);
+		Image sprite2 = SwingFXUtils.toFXImage(m.getSquaresImage(yAxe,xAxe), null);
+		gc.drawImage(sprite1, xBoat * tileSize, yBoat * tileSize);
+		gc.drawImage(sprite2, xAxe * tileSize, yAxe * tileSize);
+
+		model.setAxeX(0);
+		model.setAxeY(0);
+		model.setBoatX(0);
+		model.setBoatY(0);
+		
+		Write2File("~/SettingFile/axe.txt", xAxe, yAxe);
+		Write2File("~/SettingFile/boat.txt", xBoat, yBoat);
+		
+		Console.setText("Map has been reset");
+		Console.setPrefWidth(167);
+	    Console.setWrapText(true);
 	}
 }
