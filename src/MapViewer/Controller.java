@@ -16,31 +16,31 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 public class Controller {
 	private int tileSize;
 	private boolean isAxeChosen = false;
 	private boolean isBoatChosen = false;
-	
-//	private int checkAxebutton = 0;
-//	private int checkBoatbutton = 0;
-	
+
 	private boolean RadioClicked = false;
 	
 	private GraphicsContext gc;
 	private TileMap m;
 	private Model model;
+	
 	int Rownum;
 	int Colnum;
 	
 	int temp_axe[][];
 	int temp_boat[][];
 	
+
 	@FXML Canvas mapcanvas;
 	@FXML private Button AxeButton;	//Button initialization used to place the axe
 	@FXML private Button BoatButton; //Button initialization used to place the boat
 	@FXML private Button LoadMapButton; //Button to load Map
-	@FXML Label OutputConsoleLabel;	//Text area initialization to test the buttons(not in final prototype) 
+	//@FXML Label OutputConsoleLabel;	//Text area initialization to test the buttons(not in final prototype) 
 	@FXML Label coLabel;
 	@FXML Label Console;
 	@FXML Label item_label;
@@ -133,8 +133,8 @@ public class Controller {
 		int oldy = model.getBoatY();
 		Image sprite = SwingFXUtils.toFXImage(m.getSquaresImage(oldy,oldx), null);
 		gc.drawImage(sprite, oldx*tileSize, oldy*tileSize);
+		
 		if(RadioClicked == true)
-
 		mapcanvas.getGraphicsContext2D().strokeRect(oldx*tileSize, oldy*tileSize, 16, 16);
 
 		model.setBoatX(x);
@@ -148,11 +148,10 @@ public class Controller {
 		BufferedImage sprite;
 		if(isAxeChosen == true) {
 			sprite = Content.ITEMS[1][1];
-			System.out.println("Test");
 		}
 		else {
 			sprite = Content.ITEMS[1][0];
-			System.out.println("Test2");
+
 		}
 		
 		//converts BUFFEREDIMAGE to an image
@@ -186,21 +185,20 @@ public class Controller {
 	public void onAxeAction(){
 		isAxeChosen = true;
 		isBoatChosen = false;
-		System.out.println("Axe is selected");
 		model.setItemID(0);
 		Console.setText("Set the axe on any of the grass tiles.");
 		Console.setPrefWidth(167);
 	    Console.setWrapText(true);
 		
-	}
-	
+	}	
+//	 
 	@FXML
 	public void onRadioClicked() {
-		
+		mapcanvas.getGraphicsContext2D().setFill(Color.TRANSPARENT);
+		mapcanvas.getGraphicsContext2D().setStroke(Color.GRAY);
 		if(RadioClicked == false) {
 			for (int row = 0; row < 40; row++) {
 				for (int col = 0; col < 40; col++) {
-					
 					mapcanvas.getGraphicsContext2D().strokeRect(row * 16, col * 16, 16, 16);
 				}
 			}
@@ -212,8 +210,7 @@ public class Controller {
 					BufferedImage rcImage = m.getSquaresImage(row1, col1);
 					Image tile = SwingFXUtils.toFXImage(rcImage, null);
 					gc.drawImage(tile, col1 * 16, row1 * 16);
-					//mapcanvas.getGraphicsContext2D().clearRect(row1 * 16, col1 * 16, 16, 16);
-				}
+									}
 			}
 			
 			BufferedImage Asprite;
@@ -227,12 +224,12 @@ public class Controller {
 			gc.drawImage(BspriteImage,model.getBoatX()*tileSize, model.getBoatY()*tileSize);
 		}
 	}
+	
 	//if boat button pressed, sets item chosen to boat
 	@FXML
 	public void onBoatAction(){
 		isAxeChosen = false;
 		isBoatChosen = true;
-		System.out.println("Boat is selected");
 		model.setItemID(1);
 		Console.setText("Set the boat on any of the grass tiles");
 		Console.setPrefWidth(167);
@@ -266,7 +263,10 @@ public class Controller {
 		Image sprite2 = SwingFXUtils.toFXImage(m.getSquaresImage(yAxe,xAxe), null);
 		gc.drawImage(sprite1, xBoat * tileSize, yBoat * tileSize);
 		gc.drawImage(sprite2, xAxe * tileSize, yAxe * tileSize);
-
+		if(RadioClicked == true) {
+			mapcanvas.getGraphicsContext2D().strokeRect(xBoat * tileSize, yBoat * tileSize, 16, 16);
+			mapcanvas.getGraphicsContext2D().strokeRect(xAxe * tileSize, yAxe * tileSize, 16, 16);
+		}
 		model.setAxeX(0);
 		model.setAxeY(0);
 		model.setBoatX(0);
