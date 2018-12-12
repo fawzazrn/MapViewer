@@ -2,6 +2,13 @@ package MapViewer;
 
 public class Model {
 
+	/*
+	 * This class consists of setter and getter methods 
+	 * that set the position of the X and Y co-ordinates of
+	 * axe and boat 
+	 * 
+	 */
+	
 	private int boatx;
 	private int boaty;
 	private int axex;
