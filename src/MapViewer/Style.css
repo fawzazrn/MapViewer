@@ -44,7 +44,38 @@
    src: url('gomarice.tff');
 }
 
-.label, .label2, .label3, .label4{
+.check{
+	-fx-content-display: block;
+  	-fx-position-shape: absolute;
+  	-fx-border-color: 5px solid #AAAAAA;
+  	-fx-border-radius: 100%;
+  	-fx-pref-height: 25px;
+  	-fx-pref-width: 25px;
+}
+
+.check::before {
+  	display: block;
+  	position: absolute;
+	content: '';
+  	border-radius: %;
+  	height: 15px;
+  	width: 15px;
+  	top: 5px;
+	left: 5px;
+  	margin: auto;
+	transition: background 0.25s linear;
+	-webkit-transition: background 0.25s linear;
+	
+}
+
+.radio{
+}
+
+.radio:checked.check{
+	border: 5px solid white;
+}
+
+.label, .label2, .label3, .label4, .label5{
    -fx-font-family: 'Game Continue 02';
    -fx-font-size: 30;
    -fx-text-align: center;
@@ -62,4 +93,9 @@
 	-fx-word-wrap: break-word;
 	-fx-text-overflow: ellipsis;
    -fx-font-size: 16;
+}
+
+.label5 {
+	-fx-font-family: 'Game Continue 02';
+   -fx-font-size: 20;
 }

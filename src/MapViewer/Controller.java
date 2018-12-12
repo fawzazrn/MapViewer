@@ -243,6 +243,7 @@ public class Controller {
 		Console.setPrefWidth(167);
 	    Console.setWrapText(true);
 	}
+	
 	@FXML
 	public void onSaveMap() {
 		if((isAxeChosen == false )&&(isBoatChosen == false)) {
