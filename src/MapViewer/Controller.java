@@ -245,7 +245,11 @@ public class Controller {
 	    Console.setWrapText(true);
 		
 	}	
-//	 
+	
+	/**
+	 * This is a radio button method that allows the user to see the grid lines
+	 * of the map, when the button is selected.
+	 */
 	@FXML
 	public void onRadioClicked() {
 		mapcanvas.getGraphicsContext2D().setFill(Color.TRANSPARENT);
@@ -347,6 +351,10 @@ public class Controller {
 	    Console.setWrapText(true);
 	}
 	
+	/**
+	 * When Start Button is pressed, hides the map viewer window and opens the
+	 * main Diamond Hunter game.
+	 */
 	@FXML
 	public void onStartGame() {
 		Main.ps.hide();
