@@ -367,12 +367,11 @@ public class Controller {
 			mapcanvas.getGraphicsContext2D().strokeRect(xAxe * tileSize, yAxe * tileSize, 16, 16);
 			
 		}
-		
-		model.setAxeX(0);
-		model.setAxeY(0);
-		
-		model.setBoatX(0);
-		model.setBoatY(0);
+		//Sets Axe and Boat to its original positions in Diamond Hunter
+		model.setAxeX(37);
+		model.setAxeY(26);
+		model.setBoatX(4);
+		model.setBoatY(12);
 		
 		Write2File("Resources/SettingFile/axe.txt", xAxe, yAxe);
 		Write2File("Resources/SettingFile/boat.txt", xBoat, yBoat);

@@ -1,0 +1,74 @@
+.button, .buttonMap, .buttonMap2, .buttonItems, .buttonStart{
+   -fx-background-color: black;
+   -fx-font-family: 'Game Continue 02';
+   -fx-text-fill: #1f7ca1 !important;
+   -fx-font-size: 20;
+}
+
+.buttonMap{
+	-fx-font-size: 30;
+}
+
+.button:hover{
+	-fx-border-color: #e60000 !important;
+	-fx-text-fill: #e60000 !important;
+	-fx-transition: all 2s ease 0s;
+}
+
+.buttonMap:hover{
+	-fx-border-color: #e60000 !important;
+	-fx-text-fill: #e60000 !important;
+	-fx-transition: all 2s ease 0s;
+	-fx-font-size: 34;	
+}
+
+.buttonMap2:hover{
+	-fx-border-color: #e60000 !important;
+	-fx-text-fill: #e60000 !important;
+	-fx-transition: all 2s ease 0s;
+	-fx-font-size: 24;
+}
+
+.buttonItems:hover{
+	-fx-border-color: #f6b93b !important;
+	-fx-text-fill: #f6b93b !important;
+	-fx-transition: all 2s ease 0s;
+	-fx-font-size: 24;
+}
+
+.buttonStart:hover{
+	-fx-border-color: #00b300 !important;
+	-fx-text-fill: #00b300 !important;
+	-fx-transition: all 2s ease 0s;
+	-fx-font-size: 24;
+}
+
+@font-face {
+   font-family: gomarice;
+   src: url('gomarice.tff');
+}
+
+.label, .label2, .label3, .label4, .label5{
+   -fx-font-family: 'Game Continue 02';
+   -fx-font-size: 30;
+   -fx-text-align: center;
+}
+
+.label2 {
+   -fx-font-size: 25;
+}
+
+.label3 {
+   -fx-font-size: 20;
+}
+
+.label4 {
+	-fx-word-wrap: break-word;
+	-fx-text-overflow: ellipsis;
+   -fx-font-size: 16;
+}
+
+.label5 {
+	-fx-font-family: 'Game Continue 02';
+   -fx-font-size: 20;
+}
