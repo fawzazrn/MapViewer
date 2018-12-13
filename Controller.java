@@ -5,9 +5,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 
-import com.neet.DiamondHunter.Main.Game;
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.TileMap.TileMap;
+
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -20,8 +20,8 @@ import javafx.scene.paint.Color;
 
 public class Controller {
 	private int tileSize;
-	private boolean isAxeChosen = false; //Determines if Axe will be the item to be set on map
-	private boolean isBoatChosen = false; //Determines if Boat will be the item to be set on map
+	private boolean isAxeChosen = false;
+	private boolean isBoatChosen = false;
 
 	private boolean RadioClicked = false;
 	
@@ -31,6 +31,10 @@ public class Controller {
 	
 	int Rownum;
 	int Colnum;
+	
+	int temp_axe[][];
+	int temp_boat[][];
+	
 
 	@FXML Canvas mapcanvas;
 	@FXML private Button AxeButton;	//Button initialization used to place the axe
@@ -40,7 +44,6 @@ public class Controller {
 	@FXML Label coLabel;
 	@FXML Label Console;
 	@FXML Label item_label;
-	@FXML public Button StartGameButton;
 
 	public Controller() {
 		tileSize = 16;
@@ -60,22 +63,13 @@ public class Controller {
 	    Console.setWrapText(true);
 	}
 	
-	/**
-	 * Loads map file and its tileset from a designated file path
-	 */
+	//Function to load the map from file
 	private void LoadMap() {
 		m.loadTiles("/Tilesets/testtileset.gif");
 		m.loadMap("/Maps/testmap.map");
 	}
 	
-	/**
-	 * 
-	 * Draws the map onto the canvas
-	 * 
-	 * @param g
-	 * @param numRows
-	 * @param numCols
-	 */
+	//Function to draw the map onto the canvas
 	public void drawMap(GraphicsContext g, int numRows, int numCols) {
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numCols; col++) {
@@ -86,44 +80,27 @@ public class Controller {
 		}
 	}
 
-	/**
-	 * 
-	 * Gets and displays co-ordinates of the mouse cursor position on the map 
-	 * 
-	 * @param event
-	 */
+	//Updates the co-ordinates as you hover the mouse over the map
 	public void updateCoords(MouseEvent event) {
 		int col = (int) event.getX() / tileSize;
 		int row = (int) event.getY() / tileSize;
 		coLabel.setText("(" + col + ", " + row + ")");
 	}
 	
-	/**
-	 * 
-	 * Places item on map on mouse click event
-	 * 
-	 * Item that will be set on map is decided by values of isAxeChosen and isBoatChosen
-	 * 
-	 * @param event
-	 * @throws Exception
-	 */
+	//Place item on map when mouse clicks on it.
 	public void onMapMouseClick(MouseEvent event) throws Exception {
 		int x = (int) event.getX() / tileSize; //gets column position
 		int y = (int) event.getY() / tileSize;//gets row position
 			
-			//Item can only be placed on grass tiles
 			if(m.getType(y, x) == 0) {
 				if(isAxeChosen == true) {
-					Console.setText("Set the axe on any of the grass tiles.");
 					addAxe(x, y);
 					
 				}
 				if(isBoatChosen == true) {
-					Console.setText("Set the boat on any of the grass tiles.");
 					addBoat(x, y);
 				}
 			}
-			//If statement used to check if user clicks on a non-grass tile
 			if(m.getType(y, x) != 0) {
 				Console.setText("Please set item on the grass tiles");
 				Console.setPrefWidth(167);
@@ -131,17 +108,10 @@ public class Controller {
 			}
 		
 	}
-	
-	/**
-	 * 
-	 * Sets the new location of the axe and calls the draw function 
-	 * 
-	 * Draw function places axe image on the designated co-ordinates
-	 * 
-	 * @param x
-	 * @param y
-	 */
+
+	//sets the new location of the axe and calls the draw function
 	public void addAxe(int x, int y) {
+		//checkAxebutton = 0;
 		int oldx = model.getAxeX();
 		int oldy = model.getAxeY();
 		Image sprite = SwingFXUtils.toFXImage(m.getSquaresImage(oldy,oldx), null);
@@ -156,16 +126,9 @@ public class Controller {
 		drawItem(x, y);
 	}
 	
-	/**
-	 * 
-	 * Sets the new location of the boat and calls the draw function
-	 * 
-	 * Draw function places boat image on the designated co-ordinates
-	 * 
-	 * @param x
-	 * @param y
-	 */
+	//sets the new location of the boat and calls the draw function
 	public void addBoat(int x, int y) {
+		//checkBoatbutton = 0;
 		int oldx = model.getBoatX();
 		int oldy = model.getBoatY();
 		Image sprite = SwingFXUtils.toFXImage(m.getSquaresImage(oldy,oldx), null);
@@ -180,13 +143,7 @@ public class Controller {
 		drawItem(x, y);
 	}
 	
-	/**
-	 * 
-	 * Draws an item on specific co-ordinates on the map
-	 * 
-	 * @param x
-	 * @param y
-	 */
+	//draws the item onto the map
 	public void drawItem(int x, int y) {
 		BufferedImage sprite;
 		if(isAxeChosen == true) {
@@ -202,15 +159,6 @@ public class Controller {
 		gc.drawImage(spriteImage,x*tileSize,y*tileSize);
 	}
 	
-	
-	/**
-	 * 
-	 * Stores the co-ordinates of an item into a file in a designated file path
-	 * 
-	 * @param filePath
-	 * @param rowIndex
-	 * @param colIndex
-	 */
 	public void Write2File(String filePath, int rowIndex, int colIndex) {
 		try {
 			File file = new File(filePath);
@@ -232,9 +180,7 @@ public class Controller {
 		}
 	}
 	
-	/**
-	 * Sets Axe as the item to be placed on the map when the Set Axe button is pressed
-	 */
+	//if axe button pressed, sets item chosen to axe
 	@FXML
 	public void onAxeAction(){
 		isAxeChosen = true;
@@ -248,17 +194,28 @@ public class Controller {
 //	 
 	@FXML
 	public void onRadioClicked() {
+		
+		//Specifying the color to be filled into the rectangle
 		mapcanvas.getGraphicsContext2D().setFill(Color.TRANSPARENT);
+		//Specifying the color of the rectangle to be printed
 		mapcanvas.getGraphicsContext2D().setStroke(Color.GRAY);
+		
 		if(RadioClicked == false) {
+			//nested for-loop to print out each rectangle to form a grid
 			for (int row = 0; row < 40; row++) {
 				for (int col = 0; col < 40; col++) {
 					mapcanvas.getGraphicsContext2D().strokeRect(row * 16, col * 16, 16, 16);
 				}
 			}
-			RadioClicked = true;}
+			
+			RadioClicked = true;
+			
+			}
+		
 		else {
+			
 			RadioClicked = false;
+			//for loop to print the map is the radio button is off
 			for (int row1 = 0; row1 < 40; row1++) {
 				for (int col1 = 0; col1 < 40; col1++) {
 					BufferedImage rcImage = m.getSquaresImage(row1, col1);
@@ -266,22 +223,24 @@ public class Controller {
 					gc.drawImage(tile, col1 * 16, row1 * 16);
 									}
 			}
-			
+			//Passing the buffered image of the axe as an image type
 			BufferedImage Asprite;
 			Asprite = Content.ITEMS[1][1];	
 			Image AspriteImage = SwingFXUtils.toFXImage(Asprite, null);
+			
+			//drawing the axe image on the canvas
 			gc.drawImage(AspriteImage,model.getAxeX()*tileSize, model.getAxeY()*tileSize);
 			
 			BufferedImage Bsprite;
 			Bsprite = Content.ITEMS[1][0];	
 			Image BspriteImage = SwingFXUtils.toFXImage(Bsprite, null);
+			
+			//drawing the boat image on the canvas
 			gc.drawImage(BspriteImage,model.getBoatX()*tileSize, model.getBoatY()*tileSize);
 		}
 	}
 	
-	/**
-	 * Sets Boat as the item to be placed on the map when the Set Boat button is pressed
-	 */
+	//if boat button pressed, sets item chosen to boat
 	@FXML
 	public void onBoatAction(){
 		isAxeChosen = false;
@@ -291,18 +250,10 @@ public class Controller {
 		Console.setPrefWidth(167);
 	    Console.setWrapText(true);
 	}
-	
-	/**
-	 * Saves co-ordinates of Axe and Boat into a text file in the Resources folder 
-	 * 
-	 * Co-ordinates are saved when Save Map button is pressed
-	 */
 	@FXML
 	public void onSaveMap() {
-		//Co-ordinates can only be saved if both Axe and Boat are set on the map
-		//Otherwise, MapViewer outputs a message and co-ordinates will not be saved.
 		if((isAxeChosen == false )&&(isBoatChosen == false)) {
-			Console.setText("Please set the axe or boat position first");
+			Console.setText("\nPlease set the axe or boat position first");
 			Console.setPrefWidth(167);
 		    Console.setWrapText(true);
 		}
@@ -315,10 +266,7 @@ public class Controller {
 		}
 	}
 	
-	/**
-	 * Axe and Boat sprites are erased from the map and their X and Y co-ordinates in their
-	 * respective text files are set to 0
-	 */
+	//When reset map button is pressed, takes away the current axe and boat on the map
 	@FXML
 	public void onReset() {
 		int xBoat = model.getBoatX();
@@ -345,13 +293,5 @@ public class Controller {
 		Console.setText("Map has been reset");
 		Console.setPrefWidth(167);
 	    Console.setWrapText(true);
-	}
-	
-	@FXML
-	public void onStartGame() {
-		Main.ps.hide();
-		Game.main(null);
-		
-		
 	}
 }
