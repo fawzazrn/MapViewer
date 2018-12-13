@@ -202,12 +202,12 @@ public class PlayState extends GameState {
 		
 		item = new Item(tileMap);
 		item.setType(Item.AXE);
-		readFile("~/SettingFile/axe.txt", posAxe);
+		readFile("Resources/SettingFile/axe.txt", posAxe);
 		item.setTilePosition(posAxe[1], posAxe[0]);
 		items.add(item);
 		item = new Item(tileMap);
 		item.setType(Item.BOAT);
-		readFile("~/SettingFile/boat.txt", posBoat);
+		readFile("Resources/SettingFile/boat.txt", posBoat);
 		item.setTilePosition(posBoat[1], posBoat[0]);
 		items.add(item);
 		
