@@ -173,6 +173,14 @@ public class PlayState extends GameState {
 		
 	}
 	
+	/**
+	 * Reads co-ordinates of items from a designated file path
+	 * 
+	 * Co-ordinates that are loaded are stored into an array
+	 * 
+	 * @param filepath
+	 * @param pos
+	 */
 	public void readFile(String filepath,int [] pos) {
 		BufferedReader reader;
 		try {
