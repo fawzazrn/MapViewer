@@ -3,11 +3,11 @@ Authors: Muhammad Ameerul Hady bin Zul Hadi, Erfann Daniel bin Shalby, Logan Cha
 
 Map Viewer is a program designed for setting the Axe and Boat items from the game, Diamond Hunter, onto the map of Diamond Hunter. Once the Axe and Boat items are set on the map in Map Viewer, the items are able to be interacted with in Diamond Hunter itself. 
 
-IMPORTANT: Before running the Map Viewer code, install the gomarice.tff font in order to properly display the text in the program.
-
 How to run Map Viewer:
 1. Navigate to .jar file for Map Viewer and click on it.
 2. To run Diamond Hunter through Map Viewer, click Start Map button in the program.
+
+IMPORTANT: Before running the Map Viewer code, install the gomarice.tff font in order to properly display the text in the program.
 
 How to use Map Viewer:
 1. To set the Axe item on the map, click on "Place Axe" button then click on any one of the Grass tile.
