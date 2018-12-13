@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 
 public class Main extends Application{
 	public static Stage ps;
-	
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		ps = primaryStage;
