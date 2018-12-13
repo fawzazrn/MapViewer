@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="640.0" prefWidth="840.0" style="-fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MapViewer.Controller">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="840.0" style="-fx-border-color: black; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MapViewer.Controller">
    <left>
       <AnchorPane prefHeight="640.0" prefWidth="640.0" BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +26,7 @@
       </AnchorPane>
    </left>
    <right>
-      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #004F6F; -fx-border-color: #f6b93b; -fx-border-width: 5;" BorderPane.alignment="CENTER">
+      <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="205.0" style="-fx-background-color: #004F6F; -fx-border-color: #f6b93b; -fx-border-width: 5;" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="coLabel" layoutX="119.0" layoutY="81.0" prefHeight="36.0" prefWidth="62.0" styleClass="label3" stylesheets="@Style.css" text="(0,0)" textFill="#f6b93b">
                <padding>
@@ -158,6 +158,12 @@
             </RadioButton>
             <Label layoutX="43.0" layoutY="454.0" styleClass="label5" stylesheets="@Style.css" text="Display Gridlines" textFill="#f6b93b" />
           </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
       </Pane>
    </right>
 </BorderPane>
