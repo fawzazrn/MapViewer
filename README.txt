@@ -7,7 +7,7 @@ How to run Map Viewer:
 1. Navigate to .jar file for Map Viewer and click on it.
 2. To run Diamond Hunter through Map Viewer, click Start Map button in the program.
 
-IMPORTANT: Before running the Map Viewer code, install the gomarice.tff font in order to properly display the text in the program.
+IMPORTANT: Before running the Map Viewer code, install the gomarice.tff font in order to properly display the text in the program as there are problems with installing the font manually via CSS in Java 8.
 
 How to use Map Viewer:
 1. To set the Axe item on the map, click on "Place Axe" button then click on any one of the Grass tile.

@@ -119,7 +119,7 @@
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor></Button>
-            <Button fx:id="ResetMapButton" layoutX="10.0" layoutY="231.0" mnemonicParsing="false" onAction="#onReset" prefHeight="37.0" prefWidth="180.0" styleClass="buttonMap2" stylesheets="@Style.css" text="Reset Map" textFill="#1f7ca1">
+            <Button fx:id="ResetMapButton" layoutX="10.0" layoutY="231.0" mnemonicParsing="false" onAction="#onReset" prefHeight="42.0" prefWidth="180.0" styleClass="buttonMap2" stylesheets="@Style.css" text="Reset to default" textFill="#1f7ca1">
                <effect>
                   <Glow level="1.0" />
                </effect>
