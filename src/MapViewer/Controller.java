@@ -42,6 +42,7 @@ public class Controller {
 	@FXML Label item_label;
 	@FXML public Button StartGameButton;
 
+	
 	//The controller constructor to run the code 
 	public Controller() {
 		tileSize = 16;
@@ -57,6 +58,10 @@ public class Controller {
 		//line to save the mapcanvas of type GraphicsContext
 		gc = mapcanvas.getGraphicsContext2D();
 		drawMap(gc, Rownum, Colnum);
+		isAxeChosen = false;
+		addBoat(4,12);
+		isAxeChosen = true;
+		addAxe(37,26);
 		Console.setText("Select either Axe or Boat to be placed");
 		Console.setPrefWidth(167);
 	    Console.setWrapText(true);
@@ -148,9 +153,10 @@ public class Controller {
 	public void addAxe(int x, int y) {
 		int oldx = model.getAxeX();
 		int oldy = model.getAxeY();
-		Image sprite = SwingFXUtils.toFXImage(m.getSquaresImage(oldy,oldx), null);
 		
+		Image sprite = SwingFXUtils.toFXImage(m.getSquaresImage(oldy,oldx), null);		
 		gc.drawImage(sprite, oldx*tileSize, oldy*tileSize);
+		
 		//if the radio button is clicked
 		if(RadioClicked == true)
 			mapcanvas.getGraphicsContext2D().strokeRect(oldx*tileSize, oldy*tileSize, 16, 16);//Draws the gridlines 
@@ -173,6 +179,7 @@ public class Controller {
 	public void addBoat(int x, int y) {
 		int oldx = model.getBoatX();
 		int oldy = model.getBoatY();
+		
 		Image sprite = SwingFXUtils.toFXImage(m.getSquaresImage(oldy,oldx), null);
 		gc.drawImage(sprite, oldx*tileSize, oldy*tileSize);
 		
@@ -208,7 +215,6 @@ public class Controller {
 		Image spriteImage = SwingFXUtils.toFXImage(sprite, null);
 		gc.drawImage(spriteImage,x*tileSize,y*tileSize);
 	}
-	
 	
 	/**
 	 * 
@@ -283,7 +289,7 @@ public class Controller {
 					Image tile = SwingFXUtils.toFXImage(rcImage, null);
 					//print out the rectangle for each tile
 					gc.drawImage(tile, col1 * 16, row1 * 16);
-									}
+				}
 			}
 			
 			BufferedImage Asprite;
@@ -343,21 +349,17 @@ public class Controller {
 	 */
 	@FXML
 	public void onReset() {
+		
+		isAxeChosen = false;
+		addBoat(4,12);
+		isAxeChosen = true;
+		addAxe(37,26);
+		
 		int xBoat = model.getBoatX();
 		int yBoat = model.getBoatY();
 		
 		int xAxe = model.getAxeX();
 		int yAxe = model.getAxeY();
-		
-		//stores the boat image 
-		Image sprite1 = SwingFXUtils.toFXImage(m.getSquaresImage(yBoat,xBoat), null);
-		//stores the boat image 
-		Image sprite2 = SwingFXUtils.toFXImage(m.getSquaresImage(yAxe,xAxe), null);
-		
-		//draws the boat onto the canvas
-		gc.drawImage(sprite1, xBoat * tileSize, yBoat * tileSize);
-		//draws the axe onto the canvas
-		gc.drawImage(sprite2, xAxe * tileSize, yAxe * tileSize);
 		
 		//if the radio button is clicked
 		if(RadioClicked == true) {
@@ -367,16 +369,11 @@ public class Controller {
 			mapcanvas.getGraphicsContext2D().strokeRect(xAxe * tileSize, yAxe * tileSize, 16, 16);
 			
 		}
-		//Sets Axe and Boat to its original positions in Diamond Hunter
-		model.setAxeX(37);
-		model.setAxeY(26);
-		model.setBoatX(4);
-		model.setBoatY(12);
 		
-		Write2File("Resources/SettingFile/axe.txt", xAxe, yAxe);
-		Write2File("Resources/SettingFile/boat.txt", xBoat, yBoat);
+		Write2File("Resources/SettingFile/axe.txt", model.getAxeX(), model.getAxeY());
+		Write2File("Resources/SettingFile/boat.txt", model.getBoatX(), model.getBoatY());
 		
-		Console.setText("Map has been reset");
+		Console.setText("Map has been set to default");
 		Console.setPrefWidth(167);
 	    Console.setWrapText(true);
 	}
@@ -393,3 +390,5 @@ public class Controller {
 		
 	}
 }
+
+
