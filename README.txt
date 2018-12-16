@@ -1,5 +1,9 @@
 # MapViewer
-Authors: Muhammad Ameerul Hady bin Zul Hadi, Erfann Daniel bin Shalby, Logan Chandrasegaran, Muhammad Fawwaz bin Azrin
+Authors: 
+Muhammad Ameerul Hady bin Zul Hadi (20017900 - hcymz1) Github - AmeerulH
+Erfann Daniel bin Shalby (18025404 - khfy6eds) Github - LoganChandra
+Logan Chandrasegaran (20024900 - hcylc1) Github - tenryuuwu
+Muhammad Fawwaz bin Azrin (20015639 - hcyma1) Github - fawzazrn
 
 Map Viewer is a program designed for setting the Axe and Boat items from the game, Diamond Hunter, onto the map of Diamond Hunter. Once the Axe and Boat items are set on the map in Map Viewer, the items are able to be interacted with in Diamond Hunter itself. 
 
